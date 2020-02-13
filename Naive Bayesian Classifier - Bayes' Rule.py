@@ -1,10 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from uncertainties import ufloat
 
 '''
-Implement my own Naive Bayes classifier that can be used for predicting the stability of object placements on a table.
+Implement my own Naive Bayes' classifier that can be used for predicting the stability of object placements on a table.
+Statistical measures such as classification error, accuracy, precision, recall values, confidence interval are also determined for the ML classifier developed. 
+Thus Classifier performance is reported 
+
 The pose is described using the following features.
 Each pose either leads to a successful execution or not, so we have two classes, namely 0 and 1, corresponding to the outcomes failure and success respectively
+
+P.S --> No inbuild libraries or APIs are used and everything is developed and programmed manually
 '''
 
 #Loading training data
@@ -31,7 +37,7 @@ for i in range(len(class_data)):
     class_len.append(len(det))
     class_prob.append(len(det)/len(train_data[:,-1]))
 
-#Extracting feature data F1 , F2, F3, F4 and classifying into class o or 1    
+#Extracting feature data F1 , F2, F3, F4 and classifying into class 0 or 1    
 for i in range(features):
     for j in range(3):
         class_0 = [x for x,y in train_data[:,[i,4]] if x==j and y==0]
@@ -49,7 +55,7 @@ for i in range(len(test_data)):
     else:
         predicted_labels.append(0)
         
-    #For Confusion Matrix Values
+    #For Confusion Matrix
     if(test_data[i,-1] == 0 and predicted_labels[i] == 0):     #True Negative
         true_neg=true_neg+1
       
@@ -62,7 +68,7 @@ for i in range(len(test_data)):
     elif(test_data[i,-1] == 1 and predicted_labels[i] == 0):   #False Negative
         false_neg=false_neg+1
 
-# Plot your predicted labels.
+# Plotting the predicted labels.
 for i in range(len(test_data)):
     if predicted_labels[i]==0:      #Plot labels 0 as black
         plt.plot(test_points[i,0],test_points[i,1],color="black", marker='o')
@@ -75,9 +81,26 @@ false_positive = false_pos
 true_negative = true_neg
 false_negative = false_neg
 
-# Please assign the accuracy to the following variable.
-accuracy = ((true_positive+true_negative)/len(test_data)*100)
-print("Prediction Accuracy: ",accuracy,"%")
+# Determining values for Statistical measures like accuracy, error, precision, recall, confidence interval
+#Calculating Classification_accuracy
+classification_accuracy = ((true_positive+true_negative)/len(test_data)*100)
+
+#Calculating Classification_error
+classification_error = ((false_positive+false_negative)/len(test_data)*100)
+print("Classification Accuracy: ",classification_accuracy,"%")
+print("Classification Error: ",classification_error,"%")
+
+#Calculating Precision and Recall values
+precision = (true_positive/float(true_positive+false_positive))
+recall = (true_positive/float(true_positive+false_negative))
+print("Precision: ", precision)
+print("Recall: ", recall)
+
+#Calculating Confidence Interval
+plus_minus= ufloat(classification_error , 2.58)
+confidence_interval=(plus_minus*np.sqrt((classification_error*(1-classification_error))/len(test_data))
+print("Confidence Interval: ", confidence_interval)                     
+
 print("True Positive: ", true_positive)
 print("False Positive: ",false_positive)
 print("True Negative: ", true_negative)
