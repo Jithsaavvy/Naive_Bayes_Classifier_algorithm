@@ -20,7 +20,7 @@ The task consists of the following steps:
 
 2. The test data set (data/test.txt) for testing the classifier (i.e. predict the class labels of the 500 test points using the given features and compare the predicted labels with the actual labels) along with confusion matrix
 
-3. The performance evaluation/statistics measure of the classifier is done as follows by means of confusion matrix
+3. The performance evaluation/statistics measure of the classifier is done as follows by means of confusion matrix <br>
       A) **Classification Accuracy and Error** are calculated <br>
       B) **Precision** and **Recall** values are also calculated as part of performance evaluation. <br> 
       C) **Confidence Interval for the classification error** is determined and evaluated with the testing datasets. <br>
