@@ -22,5 +22,7 @@ The task consists of the following steps:
 
 4. 99.6% accuracy is achieved and precision , recall values are evaluated for performance.
 
+To assess the performance, **Evaluation datasets** are used for testing the algorithm.
+
 Note:
 The green and black points correspond to stable and unstable placements respectively
