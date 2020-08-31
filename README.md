@@ -16,9 +16,9 @@ Each pose either leads to a successful execution or not, so we have two classes,
 
 The task consists of the following steps:
 
-1. Training data set (data/train.txt) of features describing 1500 poses and the class labels of these. Use the data in this data set for learning the prior probabilities P(Cj)and the conditional probabilities P(Fi|Cj), i∈{1,2,3,4}, j∈{1,2}j∈{1,2} . Learning in this context means calculating the values of the probabilities as relative frequencies.
+1. Training data set consisting of features about 1500 poses along with class labels.
 
-2. The test data set (data/test.txt) for testing the classifier (i.e. predict the class labels of the 500 test points using the given features and compare the predicted labels with the actual labels) along with confusion matrix
+2. The test data set which is used for testing the classifier (i.e. The class labels of the 500 test data points are tested using the given features and the predicted labels are compared with the actual labels) and 
 
 3. The performance evaluation/statistics measure of the classifier is done as follows by means of confusion matrix <br>
       A) **Classification Accuracy and Error** are calculated <br>
@@ -27,7 +27,4 @@ The task consists of the following steps:
 
 4. **99.6%** accuracy is achieved
 
-To assess the performance, **Evaluation datasets** are used for testing the algorithm.
-
-Note:
-The green and black points correspond to stable and unstable placements respectively
+To assess the performance, **Evaluation datasets** are used for testing the algorithm
