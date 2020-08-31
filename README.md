@@ -1,4 +1,4 @@
-# Naive_Bayesian_Classifier---Bayes-Rule
+# Naive_Bayes_Classifier_algorithm
 
 The Naive Bayes classifier is a quite simple and popular classifier that is entirely based on a conditional independence assumption
 
